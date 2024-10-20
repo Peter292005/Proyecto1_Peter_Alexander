@@ -8,7 +8,7 @@ package proyecto1_peter_alexander;
  *
  * @author mateusnaddaf
  */
-public class Proyecto1_Peter_Alexander {
+public class Main {
 
     /**
      * @param args the command line arguments
