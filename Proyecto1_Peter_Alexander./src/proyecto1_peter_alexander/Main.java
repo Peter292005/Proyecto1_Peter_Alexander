@@ -19,19 +19,19 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ListaSimple lista = new ListaSimple();
-        lista.insertarFinal(1);
-        lista.insertarFinal(2);
-        lista.insertarFinal(3);
-        lista.insertarFinal(4);
-        
-        lista.mostrar();
-        
-        lista.eliminarFinal();
-        
-        lista.mostrar();
-        
-        System.out.println(lista.buscar(100));
+//        ListaSimple lista = new ListaSimple();
+//        lista.insertarFinal(1);
+//        lista.insertarFinal(2);
+//        lista.insertarFinal(3);
+//        lista.insertarFinal(4);
+//        
+//        lista.mostrar();
+//        
+//        lista.eliminarFinal();
+//        
+//        lista.mostrar();
+//        
+//        System.out.println(lista.buscar(100));
 
         Cola cola = new Cola();
         
