@@ -112,6 +112,23 @@ public class ListaSimple {
             return "La lista esta vacia";
         }
     }
+    public Object getValor(int posicion) {
+
+        if (posicion >= 0 && posicion < size) {
+
+            if (posicion == 0) {
+                return this.pFirts.getElemento();
+            } else {
+                Nodo aux = this.pFirts;
+                for (int i = 0; i < posicion; i++) {
+                    aux = aux.getSiguiente();
+                }
+                return aux.getElemento();
+            }
+        }
+        return null;
+    }
+    
 
     @Override
     public String toString() {
