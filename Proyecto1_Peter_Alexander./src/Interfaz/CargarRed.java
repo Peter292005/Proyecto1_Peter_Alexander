@@ -4,17 +4,33 @@
  */
 package Interfaz;
 
+import EstructurasDatos.Grafo;
+import Funciones.Cargar;
+import Funciones.Funcion;
+import Funciones.Helpers;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mateusnaddaf
  */
 public class CargarRed extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CargarRed
-     */
+   public static Grafo redTransporte = new Grafo();
+    public static int T;
+    public static Helpers helpers = new Helpers();
+    public static Funcion FuncionesApp = new Funcion();
+
+    private Cargar cargar = new Cargar();
+    
+
     public CargarRed() {
         initComponents();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+    
+
     }
 
     /**
@@ -94,10 +110,28 @@ public class CargarRed extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarRedActionPerformed
-        cargar.cargarJSON(ruta.getText());
-        func.cargarGrafo(cargar.getVertices(), redTransporte);
-        
-        redTransporte.mostrar();
+        if (!contenido.getText().isEmpty()) {
+            cargar.cargarJSON(ruta.getText());
+            FuncionesApp.cargarGrafo(cargar.getVertices(), redTransporte);
+            
+            
+            
+            String valorInicialT = "";
+            
+            valorInicialT = JOptionPane.showInputDialog("Valor inicial de T: ");
+            while (helpers.esNumero(valorInicialT) == -1 || !helpers.estaRango(1, redTransporte.numeroVetices(), helpers.esNumero(valorInicialT))) {
+                valorInicialT = JOptionPane.showInputDialog("Error!!! Debe ser un numero entero mayor que 0\nValor inicial de T: ");
+            }
+            
+            T = helpers.esNumero(valorInicialT);
+
+
+            Menu menu = new Menu();
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes seleccionar un archivo.");
+        }
                                 
     }//GEN-LAST:event_cargarRedActionPerformed
 

@@ -4,6 +4,11 @@
  */
 package Interfaz;
 
+import static Interfaz.CargarRed.FuncionesApp;
+import EstructurasDatos.ListaSimple;
+import static Interfaz.CargarRed.redTransporte;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author mateusnaddaf
@@ -13,10 +18,24 @@ public class ColocarSucursal extends javax.swing.JFrame {
     /**
      * Creates new form ColocarSucursal
      */
+    DefaultComboBoxModel modelparadasSinSucursal = new DefaultComboBoxModel();
     public ColocarSucursal() {
         initComponents();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+        paradasSinSucursal.removeAllItems();
+        this.agregarParadasSinSucursal();
     }
-
+    private void agregarParadasSinSucursal(){
+        ListaSimple nombres = FuncionesApp.listaParadas(redTransporte, 0);
+        if(!nombres.esVacia()){
+            for (int i = 0; i < nombres.getSize(); i++) {
+                modelparadasSinSucursal.addElement(nombres.getValor(i));
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +45,69 @@ public class ColocarSucursal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        paradasSinSucursal = new javax.swing.JComboBox<>();
+        SeleccionarParada = new javax.swing.JButton();
+        VolverMenu = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setText("Colocar Sucursal");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel2.setText("Seleccione la parada para colocar la sucursal:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        paradasSinSucursal.setModel(modelparadasSinSucursal);
+        jPanel1.add(paradasSinSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, -1));
+
+        SeleccionarParada.setText("Seleccionar parada");
+        SeleccionarParada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeleccionarParadaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SeleccionarParada, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 130, 190, -1));
+
+        VolverMenu.setText("Volver al menu");
+        VolverMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SeleccionarParadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarParadaActionPerformed
+        String nombreParada = (String) paradasSinSucursal.getSelectedItem();
+        FuncionesApp.gestionarSucursal(redTransporte, nombreParada, 1);
+        paradasSinSucursal.removeAllItems();
+        this.agregarParadasSinSucursal();
+    }//GEN-LAST:event_SeleccionarParadaActionPerformed
+
+    private void VolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverMenuActionPerformed
+        Menu menu = new Menu();
+        this.dispose();
+    }//GEN-LAST:event_VolverMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +145,11 @@ public class ColocarSucursal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SeleccionarParada;
+    private javax.swing.JButton VolverMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> paradasSinSucursal;
     // End of variables declaration//GEN-END:variables
 }

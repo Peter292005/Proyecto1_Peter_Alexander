@@ -55,9 +55,10 @@ public class Grafo {
         if (this.buscarVertice(vertice) == null) {
             vertice.setNumVertice(this.numeroVetices());
             this.vertices.insertarFinal(vertice);
-            JOptionPane.showMessageDialog(null, "Vertice insertado con exito.");
+            
         }else{
-           JOptionPane.showMessageDialog(null, "El vertice ya xiste");
+           JOptionPane.showMessageDialog(null, "El vertice ya existe");
+           
         }
         
     }
@@ -84,6 +85,10 @@ public class Grafo {
 
     public void mostrar() {
         this.vertices.mostrar();
+    }
+    
+    public void destruir(){
+        this.vertices.destruir();
     }
 }
 
