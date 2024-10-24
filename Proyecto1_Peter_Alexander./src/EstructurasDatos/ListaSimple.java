@@ -157,6 +157,10 @@ public class ListaSimple {
     public void mostrar(){
         JOptionPane.showMessageDialog(null, this.toString());
     }
+    public void destruir(){
+        this.pFirts = null;
+        this.size = 0;
+    }
         
 
 }
