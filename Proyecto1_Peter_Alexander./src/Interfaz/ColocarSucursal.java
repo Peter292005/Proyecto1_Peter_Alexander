@@ -51,6 +51,7 @@ public class ColocarSucursal extends javax.swing.JFrame {
         paradasSinSucursal = new javax.swing.JComboBox<>();
         SeleccionarParada = new javax.swing.JButton();
         VolverMenu = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,15 @@ public class ColocarSucursal extends javax.swing.JFrame {
         });
         jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
 
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,6 +118,10 @@ public class ColocarSucursal extends javax.swing.JFrame {
         Menu menu = new Menu();
         this.dispose();
     }//GEN-LAST:event_VolverMenuActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,6 +161,7 @@ public class ColocarSucursal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SeleccionarParada;
     private javax.swing.JButton VolverMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

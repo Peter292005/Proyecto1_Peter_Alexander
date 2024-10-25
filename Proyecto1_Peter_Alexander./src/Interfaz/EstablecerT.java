@@ -4,6 +4,11 @@
  */
 package Interfaz;
 
+import static Interfaz.CargarRed.T;
+import static Interfaz.CargarRed.helpers;
+import static Interfaz.CargarRed.redTransporte;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mateusnaddaf
@@ -15,6 +20,10 @@ public class EstablecerT extends javax.swing.JFrame {
      */
     public EstablecerT() {
         initComponents();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        valorActualT.setText(String.valueOf(T));
     }
 
     /**
@@ -26,21 +35,95 @@ public class EstablecerT extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        valorActualT = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nuevaT = new javax.swing.JSpinner();
+        Actualizar = new javax.swing.JButton();
+        VolverMenu = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel1.setText("Modificar T");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        valorActualT.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        valorActualT.setText("T");
+        jPanel1.add(valorActualT, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 90, 20));
+
+        jLabel3.setText("Selecciona un valor de T:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        nuevaT.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        jPanel1.add(nuevaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 150, -1));
+
+        Actualizar.setText("Actualizar ");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        VolverMenu.setText("Volver al menu");
+        VolverMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 50));
+
+        jLabel2.setText("Valor Actual de T =");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        int newT = (int) nuevaT.getValue();
+        if(helpers.estaRango(0, redTransporte.numeroVetices(), newT)){
+            T =  newT;
+            valorActualT.setText(String.valueOf(T));
+            JOptionPane.showMessageDialog(null, "Valor de T actualizado con exito.");
+        }else{
+            JOptionPane.showMessageDialog(null, "El valor de T debe estar en el rango entre " + 0 + " y " + redTransporte.numeroVetices() + " incluyendo ambos numeros.");
+        }
+    }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void VolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverMenuActionPerformed
+        Menu menu = new Menu();
+        this.dispose();        
+    }//GEN-LAST:event_VolverMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +161,14 @@ public class EstablecerT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
+    private javax.swing.JButton VolverMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner nuevaT;
+    private javax.swing.JLabel valorActualT;
     // End of variables declaration//GEN-END:variables
 }
