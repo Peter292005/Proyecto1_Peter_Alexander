@@ -12,7 +12,7 @@ import MainClass.Parada;
 
 /**
  *
- * @author mateusnaddaf
+ * @author mateusnaddaf y alex
  */
 public class Main {
 
