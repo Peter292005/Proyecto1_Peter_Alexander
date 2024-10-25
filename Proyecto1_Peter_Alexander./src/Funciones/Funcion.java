@@ -23,6 +23,12 @@ public class Funcion {
             }
         }
     }
+    public void agregarVertices(Grafo grafo, ListaSimple vertices) {
+        for (int i = 0; i < vertices.getSize(); i++) {
+            Vertice verticeAct = (Vertice) vertices.getValor(i);
+            grafo.insertarVertice(verticeAct);
+        }
+    }
 
     public boolean haySucursales(Grafo grafo) {
         for (int i = 0; i < grafo.getVertices().getSize(); i++) {

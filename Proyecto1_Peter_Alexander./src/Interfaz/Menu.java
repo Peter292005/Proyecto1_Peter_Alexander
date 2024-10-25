@@ -38,10 +38,11 @@ public class Menu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         ColocarSucursal = new javax.swing.JButton();
         EliminarSucursal = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        EstablecerT = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         volver = new javax.swing.JButton();
+        AgregarLinea = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,7 +50,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
         jLabel1.setText("Menu");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
         jButton1.setText("Busqueda BFS");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 130, 30));
@@ -78,13 +79,13 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(EliminarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 30));
 
-        jButton5.setText("Establecer T");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        EstablecerT.setText("Establecer T");
+        EstablecerT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                EstablecerTActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 130, 30));
+        jPanel1.add(EstablecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 130, 30));
 
         jButton6.setText("Mostrar Grafo");
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 130, 30));
@@ -106,6 +107,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
 
+        AgregarLinea.setText("Agregar Linea");
+        AgregarLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarLineaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AgregarLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,9 +135,10 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void EstablecerTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstablecerTActionPerformed
+        EstablecerT v1 = new EstablecerT();
+        this.dispose();
+    }//GEN-LAST:event_EstablecerTActionPerformed
 
     private void EliminarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarSucursalActionPerformed
         if(FuncionesApp.haySucursales(redTransporte)){
@@ -157,6 +167,11 @@ public class Menu extends javax.swing.JFrame {
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void AgregarLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLineaActionPerformed
+        AgregarLinea v1 = new AgregarLinea();
+        this.dispose();
+    }//GEN-LAST:event_AgregarLineaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,12 +209,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarLinea;
     private javax.swing.JButton ColocarSucursal;
     private javax.swing.JButton EliminarSucursal;
+    private javax.swing.JButton EstablecerT;
     private javax.swing.JButton Exit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

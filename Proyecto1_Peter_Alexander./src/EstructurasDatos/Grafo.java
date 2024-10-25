@@ -50,6 +50,23 @@ public class Grafo {
 
         return null;
     }
+    public Vertice buscarVerticePorNombre(String nombre) {
+        if (!this.grafoVacio()) {
+            Nodo aux = this.vertices.getpFirts();
+            while (aux != null) {
+                Vertice verticeActual = (Vertice) aux.getElemento();
+                if (verticeActual.getParada().getNombre().equalsIgnoreCase(nombre)) {
+                    return verticeActual;
+                }
+
+                aux = aux.getSiguiente();
+            }
+
+            return null;
+        }
+
+        return null;
+    }
 
     public void insertarVertice(Vertice vertice) {
         if (this.buscarVertice(vertice) == null) {
