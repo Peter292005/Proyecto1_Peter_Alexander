@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaz;
+import Funciones.RedEstacionesVisualizador;
 import static Interfaz.CargarRed.FuncionesApp;
 import static Interfaz.CargarRed.redTransporte;
 import javax.swing.JOptionPane;
@@ -88,6 +89,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(EstablecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 130, 30));
 
         jButton6.setText("Mostrar Grafo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 130, 30));
 
         Exit.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
@@ -172,6 +178,13 @@ public class Menu extends javax.swing.JFrame {
         AgregarLinea v1 = new AgregarLinea();
         this.dispose();
     }//GEN-LAST:event_AgregarLineaActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        System.setProperty("org.graphstream.ui", "swing");
+        RedEstacionesVisualizador visualizador = new RedEstacionesVisualizador(redTransporte);
+        visualizador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
