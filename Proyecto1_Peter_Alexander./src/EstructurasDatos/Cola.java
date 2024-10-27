@@ -61,11 +61,15 @@ public class Cola {
         size++;
     }
     
-    public void desenColar(){
+    public Object desenColar(){
         if(!this.colaVacia()){
+            Object dato = this.cabeza.getDato();
             this.setCabeza(this.cabeza.getSiguiente());
             size--;
+            return dato;
         }
+        
+        return null;
     }
 
     @Override
