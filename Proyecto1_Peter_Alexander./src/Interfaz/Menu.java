@@ -35,8 +35,8 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BusquedaBFS = new javax.swing.JButton();
+        BusquedaDFS = new javax.swing.JButton();
         ColocarSucursal = new javax.swing.JButton();
         EliminarSucursal = new javax.swing.JButton();
         EstablecerT = new javax.swing.JButton();
@@ -53,16 +53,21 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setText("Menu");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
-        jButton1.setText("Busqueda BFS");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 130, 30));
-
-        jButton2.setText("Busqueda DFS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BusquedaBFS.setText("Busqueda BFS");
+        BusquedaBFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BusquedaBFSActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 130, 30));
+        jPanel1.add(BusquedaBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 130, 30));
+
+        BusquedaDFS.setText("Busqueda DFS");
+        BusquedaDFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BusquedaDFSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BusquedaDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 130, 30));
 
         ColocarSucursal.setText("Colocar Sucursal");
         ColocarSucursal.addActionListener(new java.awt.event.ActionListener() {
@@ -155,9 +160,14 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_EliminarSucursalActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void BusquedaDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaDFSActionPerformed
+        if (FuncionesApp.haySucursales(redTransporte)) {
+            BusquedaDFS busquedaDFS = new BusquedaDFS();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe existir al menos una sucursal en la red para poder ingresar a esta ventana.");
+        }
+    }//GEN-LAST:event_BusquedaDFSActionPerformed
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         redTransporte.destruir();
@@ -185,6 +195,15 @@ public class Menu extends javax.swing.JFrame {
         visualizador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void BusquedaBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaBFSActionPerformed
+        if (FuncionesApp.haySucursales(redTransporte)) {
+            BusquedaBFS busquedaBFS = new BusquedaBFS();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe existir al menos una sucursal en la red para poder ingresar a esta ventana.");
+        }
+    }//GEN-LAST:event_BusquedaBFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,12 +242,12 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarLinea;
+    private javax.swing.JButton BusquedaBFS;
+    private javax.swing.JButton BusquedaDFS;
     private javax.swing.JButton ColocarSucursal;
     private javax.swing.JButton EliminarSucursal;
     private javax.swing.JButton EstablecerT;
     private javax.swing.JButton Exit;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

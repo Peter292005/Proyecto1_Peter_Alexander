@@ -4,6 +4,13 @@
  */
 package Interfaz;
 
+import EstructurasDatos.ListaSimple;
+import Funciones.Cobertura;
+import static Interfaz.CargarRed.FuncionesApp;
+import static Interfaz.CargarRed.T;
+import static Interfaz.CargarRed.redTransporte;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author mateusnaddaf
@@ -13,9 +20,28 @@ public class BusquedaBFS extends javax.swing.JFrame {
     /**
      * Creates new form BusquedaBFS
      */
+    private Cobertura cobertura = new Cobertura(redTransporte, T);
+    DefaultComboBoxModel modeloParadasSucursal= new DefaultComboBoxModel();
+    
     public BusquedaBFS() {
         initComponents();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+        modeloParadasSucursal.removeAllElements();
+        this.agregarParadasSucursal();
     }
+    
+    private void agregarParadasSucursal(){
+        ListaSimple nombres = FuncionesApp.listaParadas(redTransporte, 1);
+        for (int i = 0; i < nombres.getSize(); i++) {
+           modeloParadasSucursal.addElement(nombres.getValor(i));
+        }
+    }
+
+        
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +52,62 @@ public class BusquedaBFS extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        paradas = new javax.swing.JComboBox<>();
+        recorrerBFS = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel1.setText("Busqueda BFS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+
+        paradas.setModel(modeloParadasSucursal);
+        jPanel1.add(paradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, -1));
+
+        recorrerBFS.setText("Realizae Recorrido");
+        recorrerBFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recorrerBFSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(recorrerBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 250, -1));
+
+        volver.setText("Volver");
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void recorrerBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recorrerBFSActionPerformed
+        String nombreInicial = (String) paradas.getSelectedItem();
+        cobertura.busquedaBFS(redTransporte.buscarVerticePorNombre(nombreInicial));
+    }//GEN-LAST:event_recorrerBFSActionPerformed
+
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        Menu menu = new Menu();
+        this.dispose();
+    }//GEN-LAST:event_volverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +145,10 @@ public class BusquedaBFS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> paradas;
+    private javax.swing.JButton recorrerBFS;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
