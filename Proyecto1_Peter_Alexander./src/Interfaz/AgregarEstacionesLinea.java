@@ -80,16 +80,22 @@ public class AgregarEstacionesLinea extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Agregar Parada a la Linea Nueva");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("Nombre de la nueva parada:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        inputParada.setBackground(new java.awt.Color(204, 204, 0));
         jPanel1.add(inputParada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 170, -1));
 
+        agregarParada.setBackground(new java.awt.Color(204, 204, 0));
         agregarParada.setText("Agregar ");
         agregarParada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +104,7 @@ public class AgregarEstacionesLinea extends javax.swing.JFrame {
         });
         jPanel1.add(agregarParada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
+        siguienteConexion.setBackground(new java.awt.Color(204, 204, 0));
         siguienteConexion.setText("Siguiente");
         siguienteConexion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +113,7 @@ public class AgregarEstacionesLinea extends javax.swing.JFrame {
         });
         jPanel1.add(siguienteConexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, 30));
 
+        Volver.setBackground(new java.awt.Color(204, 204, 0));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +122,7 @@ public class AgregarEstacionesLinea extends javax.swing.JFrame {
         });
         jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, -1, -1));
 
+        jList1.setBackground(new java.awt.Color(204, 204, 0));
         jList1.setModel(modelLinea);
         jScrollPane2.setViewportView(jList1);
 
@@ -127,7 +136,7 @@ public class AgregarEstacionesLinea extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

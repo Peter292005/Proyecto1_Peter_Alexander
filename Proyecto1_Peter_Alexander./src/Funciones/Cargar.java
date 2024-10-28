@@ -20,77 +20,76 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 /**
- *
- * @author mateusnaddaf
+ * Clase que carga y procesa datos de transporte desde archivos JSON.
+ * Permite buscar y cargar archivos, procesar líneas de transporte y estaciones.
+ * 
+ * @author PeterNaddaf
  */
 public class Cargar {
     private ListaSimple vertices = new ListaSimple(); // Lista de vértices
 
+    /**
+     * Obtiene la lista de vértices.
+     * @return ListaSimple con los vértices.
+     */
     public ListaSimple getVertices() {
         return vertices;
     }
 
+    /**
+     * Establece la lista de vértices.
+     * @param vertices ListaSimple a asignar.
+     */
     public void setVertices(ListaSimple vertices) {
         this.vertices = vertices;
     }
 
+    /**
+     * Abre un archivo JSON seleccionado por el usuario y muestra su contenido.
+     * @param ruta JTextField donde se mostrará la ruta del archivo.
+     * @param contenido JTextArea donde se mostrará el contenido del archivo.
+     * @param cargar JFrame para la ventana de selección de archivo.
+     */
     public void buscarArchivo(JTextField ruta, JTextArea contenido, JFrame cargar) {
-
-        // Esto va dentro del constructor de tu JFrame o en el evento de un botón
         JFileChooser fc = new JFileChooser();
-
-        // Creo el filtro para archivos .json
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
-
-        // Le indico el filtro
         fc.setFileFilter(filtro);
 
-        // Abrimos la ventana, guardamos la opción seleccionada por el usuario
         int seleccion = fc.showOpenDialog(cargar);
 
-        // Si el usuario presiona aceptar
         if (seleccion == JFileChooser.APPROVE_OPTION) {
-
-            // Selecciono el fichero
             File fichero = fc.getSelectedFile();
-
             ruta.setText(fichero.getAbsolutePath());
             try (FileReader fr = new FileReader(fichero)) {
                 StringBuilder cadena = new StringBuilder();
                 int valor = fr.read();
-
                 while (valor != -1) {
                     cadena.append((char) valor);
                     valor = fr.read();
                 }
-
-                // Modifico el valor del JTextArea para mostrar el contenido del archivo
                 contenido.setText(cadena.toString());
-
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-
         } else {
-            // Si el usuario no seleccionó ningún archivo, muestra un mensaje
             JOptionPane.showMessageDialog(cargar, "No se ha seleccionado ningún archivo.");
         }
     }
     
+    /**
+     * Carga y procesa datos de transporte desde un archivo JSON.
+     * @param rutaArchivo Ruta del archivo JSON a cargar.
+     */
     public void cargarJSON(String rutaArchivo) {
         try {
             Gson gson = new Gson();
             JsonObject redTransporteData = gson.fromJson(new FileReader(rutaArchivo), JsonObject.class);
-
-            // Obtener los nombres de las redes de transporte (claves principales)
             ListaSimple nombresRedes = obtenerClaves(redTransporteData);
 
-            // Iterar sobre cada red de transporte
             for (int i = 0; i < nombresRedes.getSize(); i++) {
                 String nombreRed = (String) nombresRedes.getValor(i);
                 JsonElement redElement = redTransporteData.get(nombreRed);
 
-                // Verificamos si es un objeto o un arreglo y lo manejamos adecuadamente
                 if (redElement.isJsonObject()) {
                     JsonObject lineasObject = redElement.getAsJsonObject();
                     procesarLinea(lineasObject);
@@ -99,7 +98,7 @@ public class Cargar {
                     for (JsonElement elementoLinea : lineasArray) {
                         if (elementoLinea.isJsonObject()) {
                             JsonObject lineaObject = elementoLinea.getAsJsonObject();
-                            procesarLinea(lineaObject);  // Procesar cada objeto de línea
+                            procesarLinea(lineaObject);
                         }
                     }
                 }
@@ -110,6 +109,11 @@ public class Cargar {
         }
     }
 
+    /**
+     * Obtiene las claves de un objeto JSON.
+     * @param jsonObject Objeto JSON.
+     * @return ListaSimple con las claves del objeto.
+     */
     private ListaSimple obtenerClaves(JsonObject jsonObject) {
         ListaSimple listaClaves = new ListaSimple();
         for (String key : jsonObject.keySet()) {
@@ -118,22 +122,22 @@ public class Cargar {
         return listaClaves;
     }
 
-    // Método auxiliar para procesar las líneas y estaciones
+    /**
+     * Procesa una línea de transporte y sus estaciones, creando vértices y adyacencias.
+     * @param lineasObject Objeto JSON que representa una línea de transporte.
+     */
     private void procesarLinea(JsonObject lineasObject) {
-        // Obtener las claves de las líneas
         ListaSimple nombresLineas = obtenerClaves(lineasObject);
 
         for (int i = 0; i < nombresLineas.getSize(); i++) {
             String nombreLinea = (String) nombresLineas.getValor(i);
             JsonArray estacionesArray = lineasObject.getAsJsonArray(nombreLinea);
 
-            Vertice verticeAnterior = null;  // Para enlazar adyacencias entre estaciones consecutivas
+            Vertice verticeAnterior = null;
             Vertice verticeActual;
 
-            // Procesar cada estación de la línea
             for (JsonElement estacionElement : estacionesArray) {
                 if (estacionElement.isJsonPrimitive()) {
-
                     String nombreEstacion = estacionElement.getAsString();
                     verticeActual = obtenerOcrearVertice(nombreEstacion);
 
@@ -141,11 +145,9 @@ public class Cargar {
                         verticeAnterior.getListaAdyacencia().insertarFinal(verticeActual);
                         verticeActual.getListaAdyacencia().insertarFinal(verticeAnterior);
                     }
-
                     verticeAnterior = verticeActual;
 
                 } else if (estacionElement.isJsonObject()) {
-                    // Caso de una conexión peatonal (ejemplo: {"Capitolio":"El Silencio"})
                     JsonObject conexionPeatonal = estacionElement.getAsJsonObject();
                     ListaSimple clavesPeatonales = obtenerClaves(conexionPeatonal);
 
@@ -159,15 +161,20 @@ public class Cargar {
         }
     }
 
+    /**
+     * Crea o actualiza una conexión peatonal entre dos estaciones.
+     * @param estacion1 Nombre de la primera estación.
+     * @param estacion2 Nombre de la segunda estación.
+     * @param verticeAnterior Vértice anterior en la línea, para mantener adyacencias.
+     * @return El vértice de la primera estación, actualizado.
+     */
     private Vertice crearPasoPeatonal(String estacion1, String estacion2, Vertice verticeAnterior) {
         Vertice v1 = obtenerOcrearVertice(estacion1);
         Vertice v2 = obtenerOcrearVertice(estacion2);
 
-        
         v1.getParada().setPasoPeatonal(v2.getParada());
         v2.getParada().setPasoPeatonal(v1.getParada());
 
-        // Establecer también la adyacencia lógica entre las estaciones de la misma línea
         if (verticeAnterior != null) {
             verticeAnterior.getListaAdyacencia().insertarFinal(v1);
             v1.getListaAdyacencia().insertarFinal(verticeAnterior);
@@ -176,8 +183,12 @@ public class Cargar {
         return verticeAnterior;
     }
 
+    /**
+     * Obtiene un vértice existente o crea uno nuevo si no se encuentra.
+     * @param nombreParada Nombre de la parada o estación.
+     * @return Vértice correspondiente a la parada.
+     */
     private Vertice obtenerOcrearVertice(String nombreParada) {
-
         for (int i = 0; i < vertices.getSize(); i++) {
             Vertice verticeActual = (Vertice) vertices.getValor(i);
             if (verticeActual.getParada().getNombre().equalsIgnoreCase(nombreParada)) {
@@ -191,5 +202,3 @@ public class Cargar {
         return verticeNuevo;
     }
 }
-
-

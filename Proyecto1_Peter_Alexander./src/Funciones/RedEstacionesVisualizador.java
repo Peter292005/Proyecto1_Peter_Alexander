@@ -20,14 +20,23 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
 
 
 /**
- *
- * @author mateusnaddaf
+ * Clase para visualizar la red de estaciones en una interfaz gráfica.
+ * Muestra el grafo de estaciones con opciones de colores y conexiones entre estaciones.
+ * También permite agregar rutas peatonales y un botón para volver al menú principal.
+ * 
+ * Esta clase extiende JFrame.
+ * 
+ * @author PeterNaddaf
  */
 public class RedEstacionesVisualizador extends JFrame {
     private Grafo redEstaciones;
     private Viewer visualizador;
     private ViewPanel panelGrafico;
 
+    /**
+     * Constructor que inicializa el visualizador de la red de estaciones.
+     * @param redEstaciones Grafo que representa la red de estaciones.
+     */
     public RedEstacionesVisualizador(Grafo redEstaciones) {
         this.redEstaciones = redEstaciones;
         configurarVentana();
@@ -35,7 +44,9 @@ public class RedEstacionesVisualizador extends JFrame {
         agregarBotonVolver();
     }
 
-    // Configura la ventana principal donde se visualizará el grafo
+    /**
+     * Configura las propiedades de la ventana principal donde se visualizará el grafo.
+     */
     private void configurarVentana() {
         setTitle("Mapa de la Red de Estaciones");
         setSize(800, 600);
@@ -43,51 +54,53 @@ public class RedEstacionesVisualizador extends JFrame {
         setLayout(new BorderLayout());
     }
 
-    // Inicializa el visualizador de la red de estaciones
+    /**
+     * Inicializa el visualizador del grafo y configura el panel gráfico.
+     */
     private void inicializarVisualizador() {
         Graph grafoVisual = new SingleGraph("Estaciones");
         construirRed(grafoVisual);
 
-        // Mostrar el grafo sin crear una nueva ventana
         visualizador = grafoVisual.display(false);
-        visualizador.enableAutoLayout();  // Permitir que el layout se ajuste automáticamente
+        visualizador.enableAutoLayout();
 
-        // Creamos el panel de visualización si no existe ya
         if (panelGrafico == null) {
-            panelGrafico = (ViewPanel) visualizador.getDefaultView();  // Sin ventana adicional
-            add(panelGrafico, BorderLayout.CENTER);  // Añadir el panel al JFrame
+            panelGrafico = (ViewPanel) visualizador.getDefaultView();
+            add(panelGrafico, BorderLayout.CENTER);
         }
     }
 
-    // Construye el grafo visual, añadiendo los nodos y conexiones
+    /**
+     * Construye el grafo visual agregando los nodos y conexiones entre estaciones.
+     * @param grafoVisual Grafo visual donde se agregan los nodos y conexiones.
+     */
     private void construirRed(Graph grafoVisual) {
-        // Agregar los nodos correspondientes a cada vértice
         for (int i = 0; i < redEstaciones.getVertices().getSize(); i++) {
             Vertice vertice = (Vertice) redEstaciones.getVertices().getValor(i);
             Node nodo = grafoVisual.addNode(vertice.getParada().getNombre());
             nodo.setAttribute("ui.label", vertice.getParada().getNombre());
 
-            // Asignar colores: marrón si no tiene sucursal, azul si tiene sucursal
             String colorNodo = vertice.getParada().isSucursal() ? "blue" : "brown";
             nodo.setAttribute("ui.style", "fill-color: " + colorNodo + ";");
         }
 
         agregarConexiones(grafoVisual);
 
-        // Ajustar los estilos generales del grafo
         grafoVisual.setAttribute("ui.stylesheet",
                 "node { text-size: 12px; size: 30px; text-alignment: center; }"
                 + "edge { size: 2px; }"
         );
     }
 
-    // Añade las conexiones (rutas) entre las estaciones
+    /**
+     * Agrega conexiones entre estaciones, incluyendo rutas adyacentes y peatonales.
+     * @param grafoVisual Grafo visual donde se agregarán las conexiones.
+     */
     private void agregarConexiones(Graph grafoVisual) {
         for (int i = 0; i < redEstaciones.getVertices().getSize(); i++) {
             Vertice vertice = (Vertice) redEstaciones.getVertices().getValor(i);
             ListaSimple adyacentes = vertice.getListaAdyacencia();
 
-            // Añadir conexiones entre los vértices adyacentes
             for (int j = 0; j < adyacentes.getSize(); j++) {
                 Vertice verticeAdyacente = (Vertice) adyacentes.getValor(j);
                 String idConexion = vertice.getParada().getNombre() + "-" + verticeAdyacente.getParada().getNombre();
@@ -96,13 +109,15 @@ public class RedEstacionesVisualizador extends JFrame {
                     grafoVisual.addEdge(idConexion, vertice.getParada().getNombre(), verticeAdyacente.getParada().getNombre());
                 }
             }
-
-            // Agregar rutas peatonales si existen
             agregarRutaPeatonal(grafoVisual, vertice);
         }
     }
 
-    // Crea rutas peatonales (si existen) y las agrega al grafo
+    /**
+     * Agrega rutas peatonales entre estaciones, si existen, y configura su estilo.
+     * @param grafoVisual Grafo visual donde se agregarán las rutas peatonales.
+     * @param vertice Vértice que representa la estación con posible ruta peatonal.
+     */
     private void agregarRutaPeatonal(Graph grafoVisual, Vertice vertice) {
         if (vertice.getParada().tienePasoPeatonal()) {
             String nombrePasoPeatonal = vertice.getParada().getPasoPeatonal().getNombre();
@@ -116,19 +131,22 @@ public class RedEstacionesVisualizador extends JFrame {
         }
     }
 
-    // Agrega un botón que permite volver al menú principal
+    /**
+     * Agrega un botón para volver al menú principal, cerrando el visualizador al presionarlo.
+     */
     private void agregarBotonVolver() {
         JButton botonVolver = new JButton("Volver");
         botonVolver.addActionListener(e -> {
             cerrarVisualizador();
             this.dispose();
             Menu menuPrincipal = new Menu(); 
-            
         });
         add(botonVolver, BorderLayout.SOUTH);
     }
 
-    // Cierra el visor y elimina el panel de visualización
+    /**
+     * Cierra el visualizador y elimina el panel gráfico de la ventana.
+     */
     private void cerrarVisualizador() {
         if (visualizador != null) {
             visualizador.disableAutoLayout();
@@ -140,5 +158,3 @@ public class RedEstacionesVisualizador extends JFrame {
         }
     }
 }
-
-

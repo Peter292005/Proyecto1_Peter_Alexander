@@ -43,33 +43,43 @@ public class AgregarLinea extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Agregar Linea");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("Para agregar una linea se deben realizar los siguientes pasos:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(204, 204, 0));
         jLabel3.setText("Paso 1: Se deben agregar las estaciones correspondientes a la linea");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 400, -1));
 
+        jLabel4.setForeground(new java.awt.Color(204, 204, 0));
         jLabel4.setText("y establecer una conexion entre las estaciones agregadas");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(204, 204, 0));
         jLabel5.setText("Paso 2: Se debe añadir una conxion entre alguna estacion de la ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(204, 204, 0));
         jLabel6.setText("linea nueva y alguna estacion de la red existente");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(204, 204, 0));
         jLabel7.setText("Nota: la conexion del paso 2 puede ser a traves de un paso");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(204, 204, 0));
         jLabel8.setText("peatonal o a traves de una relacion de adyacencia");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, -1));
 
+        Siguiente.setBackground(new java.awt.Color(204, 204, 0));
         Siguiente.setText("Siguiente");
         Siguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +88,7 @@ public class AgregarLinea extends javax.swing.JFrame {
         });
         jPanel1.add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
+        Volver.setBackground(new java.awt.Color(204, 204, 0));
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

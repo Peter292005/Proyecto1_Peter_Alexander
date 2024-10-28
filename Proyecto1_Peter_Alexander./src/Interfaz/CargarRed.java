@@ -54,13 +54,16 @@ public class CargarRed extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("Cargar Red de Transporte");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
         jPanel2.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 300, 30));
 
+        buscarArchivo.setBackground(new java.awt.Color(204, 204, 0));
         buscarArchivo.setText("Buscar Archivo");
         buscarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +78,7 @@ public class CargarRed extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 300, 280));
 
+        cargarRed.setBackground(new java.awt.Color(204, 204, 0));
         cargarRed.setText("Cargar Red de Transporte");
         cargarRed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,10 +87,13 @@ public class CargarRed extends javax.swing.JFrame {
         });
         jPanel2.add(cargarRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 300, -1));
 
+        jButton3.setBackground(new java.awt.Color(204, 204, 0));
         jButton3.setText("Volver");
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
 
+        Exit.setBackground(new java.awt.Color(51, 51, 51));
         Exit.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        Exit.setForeground(new java.awt.Color(255, 0, 0));
         Exit.setText("X");
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
