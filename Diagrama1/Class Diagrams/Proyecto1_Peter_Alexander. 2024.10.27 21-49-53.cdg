@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Proyecto1_Peter_Alexander.">
+  <ClassDiagramComponents>
+    <Class name="Parada" package="MainClass" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="sucursal" type="boolean" visibility="private"/>
+        <Field name="pasoPeatonal" type="Parada" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="isSucursal" returnType="boolean" visibility="public"/>
+        <Method name="setSucursal" returnType="void" visibility="public">
+          <Argument type="boolean" name="sucursal"/>
+        </Method>
+        <Method name="getPasoPeatonal" returnType="Parada" visibility="public"/>
+        <Method name="setPasoPeatonal" returnType="void" visibility="public">
+          <Argument type="Parada" name="pasoPeatonal"/>
+        </Method>
+        <Method name="tienePasoPeatonal" returnType="boolean" visibility="public"/>
+        <Method name="mostrarSucursal" returnType="String" visibility="public"/>
+        <Method name="mostrarPasoPeatonal" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cobertura" package="Funciones" visibility="public" xPosition="45.0" yPosition="481.0">
+      <Fields>
+        <Field name="grafo" type="Grafo" visibility="private"/>
+        <Field name="t" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Grafo" name="grafo"/>
+          <Argument type="int" name="t"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="busquedaBFS" returnType="void" visibility="public">
+          <Argument type="Vertice" name="verticeInicial"/>
+        </Method>
+        <Method name="busquedaDFS" returnType="void" visibility="public">
+          <Argument type="Vertice" name="verticeInicial"/>
+        </Method>
+        <Method name="dfsRecursivo" returnType="void" visibility="private">
+          <Argument type="Vertice" name="vertice"/>
+          <Argument type="ListaSimple" name="visitados"/>
+          <Argument type="int" name="distanciaActual"/>
+          <Argument type="StringBuilder" name="resultado"/>
+        </Method>
+        <Method name="verificarCoberturaCompleta" returnType="void" visibility="public"/>
+        <Method name="aplicarCobertura" returnType="void" visibility="private">
+          <Argument type="Vertice" name="vertice"/>
+          <Argument type="ListaSimple" name="estacionesCubiertas"/>
+          <Argument type="int" name="distanciaMaxima"/>
+        </Method>
+        <Method name="expandirCobertura" returnType="void" visibility="private">
+          <Argument type="Vertice" name="verticeActual"/>
+          <Argument type="ListaSimple" name="estacionesCubiertas"/>
+          <Argument type="int" name="distanciaActual"/>
+          <Argument type="int" name="distanciaMaxima"/>
+        </Method>
+        <Method name="proponerNuevaSucursal" returnType="void" visibility="private">
+          <Argument type="ListaSimple" name="estacionesPendientes"/>
+          <Argument type="ListaSimple" name="estacionesCubiertas"/>
+          <Argument type="int" name="rangoCobertura"/>
+        </Method>
+        <Method name="contarCoberturaNueva" returnType="int" visibility="private">
+          <Argument type="ListaSimple" name="coberturaSimulada"/>
+          <Argument type="ListaSimple" name="estacionesCubiertas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Cargar" package="Funciones" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="vertices" type="ListaSimple" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getVertices" returnType="ListaSimple" visibility="public"/>
+        <Method name="setVertices" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="vertices"/>
+        </Method>
+        <Method name="buscarArchivo" returnType="void" visibility="public">
+          <Argument type="JTextField" name="ruta"/>
+          <Argument type="JTextArea" name="contenido"/>
+          <Argument type="JFrame" name="cargar"/>
+        </Method>
+        <Method name="cargarJSON" returnType="void" visibility="public">
+          <Argument type="String" name="rutaArchivo"/>
+        </Method>
+        <Method name="obtenerClaves" returnType="ListaSimple" visibility="private">
+          <Argument type="JsonObject" name="jsonObject"/>
+        </Method>
+        <Method name="procesarLinea" returnType="void" visibility="private">
+          <Argument type="JsonObject" name="lineasObject"/>
+        </Method>
+        <Method name="crearPasoPeatonal" returnType="Vertice" visibility="private">
+          <Argument type="String" name="estacion1"/>
+          <Argument type="String" name="estacion2"/>
+          <Argument type="Vertice" name="verticeAnterior"/>
+        </Method>
+        <Method name="obtenerOcrearVertice" returnType="Vertice" visibility="private">
+          <Argument type="String" name="nombreParada"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Funcion" package="Funciones" visibility="public" xPosition="589.0" yPosition="956.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="cargarGrafo" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="vertices"/>
+          <Argument type="Grafo" name="grafo"/>
+        </Method>
+        <Method name="agregarVertices" returnType="void" visibility="public">
+          <Argument type="Grafo" name="grafo"/>
+          <Argument type="ListaSimple" name="vertices"/>
+        </Method>
+        <Method name="haySucursales" returnType="boolean" visibility="public">
+          <Argument type="Grafo" name="grafo"/>
+        </Method>
+        <Method name="listaParadas" returnType="ListaSimple" visibility="public">
+          <Argument type="Grafo" name="grafo"/>
+          <Argument type="int" name="codigo"/>
+        </Method>
+        <Method name="gestionarSucursal" returnType="void" visibility="public">
+          <Argument type="Grafo" name="grafo"/>
+          <Argument type="String" name="nombreParada"/>
+          <Argument type="int" name="codigo"/>
+        </Method>
+        <Method name="conectarLinea" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="linea"/>
+          <Argument type="ListaSimple" name="verticesNuevos"/>
+        </Method>
+        <Method name="obtenerOcrearVertice" returnType="Vertice" visibility="private">
+          <Argument type="String" name="nombreEstacion"/>
+          <Argument type="ListaSimple" name="vertices"/>
+        </Method>
+        <Method name="nombresVertices" returnType="ListaSimple" visibility="public">
+          <Argument type="ListaSimple" name="vertices"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="NodoCola" package="EstructurasDatos" visibility="public" xPosition="778.0" yPosition="593.0">
+      <Fields>
+        <Field name="siguiente" type="NodoCola" visibility="private"/>
+        <Field name="dato" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getSiguiente" returnType="NodoCola" visibility="public"/>
+        <Method name="setSiguiente" returnType="void" visibility="public">
+          <Argument type="NodoCola" name="siguiente"/>
+        </Method>
+        <Method name="getDato" returnType="Object" visibility="public"/>
+        <Method name="setDato" returnType="void" visibility="public">
+          <Argument type="Object" name="dato"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Nodo" package="EstructurasDatos" visibility="public" xPosition="1152.0" yPosition="1332.0">
+      <Fields>
+        <Field name="siguiente" type="Nodo" visibility="private"/>
+        <Field name="elemento" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getSiguiente" returnType="Nodo" visibility="public"/>
+        <Method name="setSiguiente" returnType="void" visibility="public">
+          <Argument type="Nodo" name="siguiente"/>
+        </Method>
+        <Method name="getElemento" returnType="Object" visibility="public"/>
+        <Method name="setElemento" returnType="void" visibility="public">
+          <Argument type="Object" name="elemento"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Grafo" package="EstructurasDatos" visibility="public" xPosition="1220.0" yPosition="282.0">
+      <Fields>
+        <Field name="vertices" type="ListaSimple" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getVertices" returnType="ListaSimple" visibility="public"/>
+        <Method name="setVertices" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="vertices"/>
+        </Method>
+        <Method name="numeroVetices" returnType="int" visibility="public"/>
+        <Method name="grafoVacio" returnType="boolean" visibility="public"/>
+        <Method name="buscarVertice" returnType="Vertice" visibility="public">
+          <Argument type="Vertice" name="vertice"/>
+        </Method>
+        <Method name="buscarVerticePorNombre" returnType="Vertice" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="insertarVertice" returnType="void" visibility="public">
+          <Argument type="Vertice" name="vertice"/>
+        </Method>
+        <Method name="conectarVertices" returnType="void" visibility="public">
+          <Argument type="Vertice" name="vertice1"/>
+          <Argument type="Vertice" name="vertice2"/>
+        </Method>
+        <Method name="mostrarVertice" returnType="String" visibility="public"/>
+        <Method name="mostrar" returnType="void" visibility="public"/>
+        <Method name="destruir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cola" package="EstructurasDatos" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="cabeza" type="NodoCola" visibility="private"/>
+        <Field name="cola" type="NodoCola" visibility="private"/>
+        <Field name="size" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getCabeza" returnType="NodoCola" visibility="public"/>
+        <Method name="setCabeza" returnType="void" visibility="public">
+          <Argument type="NodoCola" name="cabeza"/>
+        </Method>
+        <Method name="getCola" returnType="NodoCola" visibility="public"/>
+        <Method name="setCola" returnType="void" visibility="public">
+          <Argument type="NodoCola" name="cola"/>
+        </Method>
+        <Method name="getSize" returnType="int" visibility="public"/>
+        <Method name="setSize" returnType="void" visibility="public">
+          <Argument type="int" name="size"/>
+        </Method>
+        <Method name="colaVacia" returnType="boolean" visibility="public"/>
+        <Method name="enColar" returnType="void" visibility="public">
+          <Argument type="Object" name="dato"/>
+        </Method>
+        <Method name="desenColar" returnType="Object" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ListaSimple" package="EstructurasDatos" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="pFirts" type="Nodo" visibility="private"/>
+        <Field name="size" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getpFirts" returnType="Nodo" visibility="public"/>
+        <Method name="setpFirts" returnType="void" visibility="public">
+          <Argument type="Nodo" name="pFirts"/>
+        </Method>
+        <Method name="getSize" returnType="int" visibility="public"/>
+        <Method name="setSize" returnType="void" visibility="public">
+          <Argument type="int" name="size"/>
+        </Method>
+        <Method name="esVacia" returnType="boolean" visibility="public"/>
+        <Method name="insertarFinal" returnType="void" visibility="public">
+          <Argument type="Object" name="dato"/>
+        </Method>
+        <Method name="eliminarFinal" returnType="void" visibility="public"/>
+        <Method name="buscar" returnType="boolean" visibility="public">
+          <Argument type="Object" name="ref"/>
+        </Method>
+        <Method name="transformar" returnType="String" visibility="public"/>
+        <Method name="getValor" returnType="Object" visibility="public">
+          <Argument type="int" name="posicion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrar" returnType="void" visibility="public"/>
+        <Method name="destruir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vertice" package="EstructurasDatos" visibility="public" xPosition="393.0" yPosition="1230.0">
+      <Fields>
+        <Field name="parada" type="Parada" visibility="private"/>
+        <Field name="numVertice" type="int" visibility="private"/>
+        <Field name="listaAdyacencia" type="ListaSimple" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Parada" name="parada"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getParada" returnType="Parada" visibility="public"/>
+        <Method name="setParada" returnType="void" visibility="public">
+          <Argument type="Parada" name="parada"/>
+        </Method>
+        <Method name="getNumVertice" returnType="int" visibility="public"/>
+        <Method name="setNumVertice" returnType="void" visibility="public">
+          <Argument type="int" name="numVertice"/>
+        </Method>
+        <Method name="getListaAdyacencia" returnType="ListaSimple" visibility="public"/>
+        <Method name="setListaAdyacencia" returnType="void" visibility="public">
+          <Argument type="ListaSimple" name="listaAdyacencia"/>
+        </Method>
+        <Method name="añadirAdyacencia" returnType="void" visibility="public">
+          <Argument type="Vertice" name="vertice"/>
+        </Method>
+        <Method name="mostrarListaAdyacencia" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="cabeza" source="EstructurasDatos.Cola" target="EstructurasDatos.NodoCola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Cola" target="EstructurasDatos.Cola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Nodo" target="EstructurasDatos.Nodo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Funciones.Funcion" target="EstructurasDatos.Vertice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.NodoCola" target="EstructurasDatos.Cola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="parada" source="EstructurasDatos.Vertice" target="MainClass.Parada" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaAdyacencia" source="EstructurasDatos.Vertice" target="EstructurasDatos.ListaSimple" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ListaSimple"/>
+    <UseRelation source="Funciones.Cobertura" target="EstructurasDatos.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Funciones.Cargar" target="EstructurasDatos.Vertice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="siguiente" source="EstructurasDatos.NodoCola" target="EstructurasDatos.NodoCola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Grafo" target="EstructurasDatos.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Vertice" target="EstructurasDatos.Vertice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Funciones.Funcion" target="EstructurasDatos.Grafo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cola" source="EstructurasDatos.Cola" target="EstructurasDatos.NodoCola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pasoPeatonal" source="MainClass.Parada" target="MainClass.Parada" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vertices" source="EstructurasDatos.Grafo" target="EstructurasDatos.ListaSimple" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ListaSimple"/>
+    <HasRelation name="pFirts" source="EstructurasDatos.ListaSimple" target="EstructurasDatos.Nodo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Funciones.Cargar" target="EstructurasDatos.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Vertice" target="EstructurasDatos.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Grafo" target="EstructurasDatos.Vertice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vertices" source="Funciones.Cargar" target="EstructurasDatos.ListaSimple" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ListaSimple"/>
+    <UseRelation source="EstructurasDatos.ListaSimple" target="EstructurasDatos.Nodo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Funciones.Cobertura" target="EstructurasDatos.Vertice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="grafo" source="Funciones.Cobertura" target="EstructurasDatos.Grafo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="MainClass.Parada" target="MainClass.Parada" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="siguiente" source="EstructurasDatos.Nodo" target="EstructurasDatos.Nodo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="EstructurasDatos.Vertice" target="MainClass.Parada" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Funciones.Funcion" target="EstructurasDatos.ListaSimple" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
