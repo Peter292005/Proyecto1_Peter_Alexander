@@ -11,20 +11,30 @@ import EstructurasDatos.Vertice;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author mateusnaddaf
+ * Clase que maneja la cobertura de estaciones en un grafo de transporte.
+ * Permite realizar búsquedas de estaciones dentro de un rango y verificar la cobertura completa.
+ * También sugiere nuevas ubicaciones de sucursales para maximizar la cobertura.
+ * 
+ * @author PeterNaddaf
  */
 public class Cobertura {
     private Grafo grafo;
     private int t;  // Límite máximo de distancia
 
-    // Constructor que inicializa el grafo y el parámetro t
+    /**
+     * Constructor que inicializa el grafo y el límite máximo de distancia.
+     * @param grafo Grafo de estaciones de transporte.
+     * @param t Límite de distancia para la cobertura.
+     */
     public Cobertura(Grafo grafo, int t) {
         this.grafo = grafo;
         this.t = t;
     }
 
-    // BFS (búsqueda en anchura)
+    /**
+     * Realiza una búsqueda en anchura (BFS) desde un vértice inicial hasta una distancia máxima.
+     * @param verticeInicial Vértice desde el cual comenzar la búsqueda.
+     */
     public void busquedaBFS(Vertice verticeInicial) {
         if (verticeInicial == null) {
             JOptionPane.showMessageDialog(null, "El vértice inicial no puede ser nulo.");
@@ -50,17 +60,15 @@ public class Cobertura {
 
             recorrido += "Vértice: " + verticeActual.getParada().getNombre() + ", Distancia: " + distanciaActual + "\n";
 
-            // Revisar paso peatonal (distancia = 0)
             if (verticeActual.getParada().getPasoPeatonal() != null) {
                 Vertice verticePeatonal = grafo.buscarVerticePorNombre(verticeActual.getParada().getPasoPeatonal().getNombre());
                 if (!visitados.buscar(verticePeatonal)) {
                     cola.enColar(verticePeatonal);
-                    distancias.enColar(distanciaActual);  // No se incrementa la distancia para paso peatonal
+                    distancias.enColar(distanciaActual);
                     visitados.insertarFinal(verticePeatonal);
                 }
             }
 
-            // Revisar adyacencias
             ListaSimple adyacentes = verticeActual.getListaAdyacencia();
             for (int i = 0; i < adyacentes.getSize(); i++) {
                 Vertice adyacente = (Vertice) adyacentes.getValor(i);
@@ -75,7 +83,10 @@ public class Cobertura {
         JOptionPane.showMessageDialog(null, recorrido);
     }
 
-    // DFS (búsqueda en profundidad)
+    /**
+     * Realiza una búsqueda en profundidad (DFS) desde un vértice inicial hasta una distancia máxima.
+     * @param verticeInicial Vértice desde el cual comenzar la búsqueda.
+     */
     public void busquedaDFS(Vertice verticeInicial) {
         if (verticeInicial == null) {
             JOptionPane.showMessageDialog(null, "El vértice inicial no puede ser nulo.");
@@ -92,26 +103,30 @@ public class Cobertura {
         JOptionPane.showMessageDialog(null, resultado.toString());
     }
 
+    /**
+     * Método recursivo que aplica DFS a un vértice y mantiene un registro de la distancia y los vértices visitados.
+     * @param vertice Vértice actual.
+     * @param visitados Lista de vértices visitados.
+     * @param distanciaActual Distancia actual desde el vértice inicial.
+     * @param resultado Registro del recorrido en profundidad.
+     */
     private void dfsRecursivo(Vertice vertice, ListaSimple visitados, int distanciaActual, StringBuilder resultado) {
         visitados.insertarFinal(vertice);
 
         resultado.append("Vértice: ").append(vertice.getParada().getNombre())
                 .append(", Distancia: ").append(distanciaActual).append("\n");
 
-        // Detener si se excede la distancia t
         if (distanciaActual >= t) {
             return;
         }
 
-        // Revisar paso peatonal (distancia = 0)
         if (vertice.getParada().getPasoPeatonal() != null) {
             Vertice verticePeatonal = grafo.buscarVerticePorNombre(vertice.getParada().getPasoPeatonal().getNombre());
             if (!visitados.buscar(verticePeatonal)) {
-                dfsRecursivo(verticePeatonal, visitados, distanciaActual, resultado);  // No se incrementa la distancia
+                dfsRecursivo(verticePeatonal, visitados, distanciaActual, resultado);
             }
         }
 
-        // Revisar adyacencias
         ListaSimple adyacentes = vertice.getListaAdyacencia();
         for (int i = 0; i < adyacentes.getSize(); i++) {
             Vertice adyacente = (Vertice) adyacentes.getValor(i);
@@ -121,17 +136,19 @@ public class Cobertura {
         }
     }
 
+    /**
+     * Verifica si todas las estaciones están cubiertas.
+     * Si existen estaciones no cubiertas, sugiere una nueva ubicación de sucursal.
+     */
     public void verificarCoberturaCompleta() {
         if (this.grafo.grafoVacio()) {
             System.out.println("El grafo está vacío. No hay estaciones para verificar.");
             return;
         }
 
-        // Lista para almacenar las estaciones cubiertas y las no cubiertas
         ListaSimple estacionesCubiertas = new ListaSimple();
         ListaSimple estacionesPendientes = new ListaSimple();
 
-        // Paso 1: Marcar cobertura de todas las sucursales
         for (int i = 0; i < this.grafo.getVertices().getSize(); i++) {
             Vertice verticeActual = (Vertice) this.grafo.getVertices().getValor(i);
             if (verticeActual.getParada().isSucursal()) {
@@ -139,7 +156,6 @@ public class Cobertura {
             }
         }
 
-        // Paso 2: Identificar las estaciones no cubiertas
         for (int i = 0; i < this.grafo.getVertices().getSize(); i++) {
             Vertice verticeActual = (Vertice) this.grafo.getVertices().getValor(i);
             if (!estacionesCubiertas.buscar(verticeActual)) {
@@ -147,7 +163,6 @@ public class Cobertura {
             }
         }
 
-        // Evaluamos los resultados
         if (estacionesPendientes.getSize() == 0) {
             JOptionPane.showMessageDialog(null, "¡Cobertura completa! Todas las estaciones están cubiertas.");
         } else {
@@ -156,59 +171,65 @@ public class Cobertura {
         }
     }
 
-// Aplica cobertura recursiva a partir de una estación, considerando su rango y el paso peatonal
+    /**
+     * Aplica cobertura a partir de una estación hasta una distancia máxima.
+     * @param vertice Vértice de inicio.
+     * @param estacionesCubiertas Lista de estaciones cubiertas.
+     * @param distanciaMaxima Distancia máxima para la cobertura.
+     */
     private void aplicarCobertura(Vertice vertice, ListaSimple estacionesCubiertas, int distanciaMaxima) {
         expandirCobertura(vertice, estacionesCubiertas, 0, distanciaMaxima);
     }
 
-// Expande la cobertura marcando estaciones y adyacentes hasta una distancia máxima
+    /**
+     * Expande la cobertura de estaciones y adyacentes hasta una distancia máxima.
+     * @param verticeActual Vértice actual.
+     * @param estacionesCubiertas Lista de estaciones cubiertas.
+     * @param distanciaActual Distancia desde el vértice inicial.
+     * @param distanciaMaxima Distancia máxima de cobertura.
+     */
     private void expandirCobertura(Vertice verticeActual, ListaSimple estacionesCubiertas, int distanciaActual, int distanciaMaxima) {
-        // Si la distancia es mayor al rango de cobertura o ya está cubierta, detenemos
         if (distanciaActual > distanciaMaxima || estacionesCubiertas.buscar(verticeActual)) {
             return;
         }
 
-        // Marcamos la estación como cubierta
         estacionesCubiertas.insertarFinal(verticeActual);
 
-        // Revisamos adyacencias
         ListaSimple adyacentes = verticeActual.getListaAdyacencia();
         for (int i = 0; i < adyacentes.getSize(); i++) {
             Vertice adyacente = (Vertice) adyacentes.getValor(i);
             expandirCobertura(adyacente, estacionesCubiertas, distanciaActual + 1, distanciaMaxima);
         }
 
-        // También cubrimos el paso peatonal si existe (sin aumentar la distancia)
         if (verticeActual.getParada().tienePasoPeatonal()) {
             Vertice verticePeatonal = grafo.buscarVerticePorNombre(verticeActual.getParada().getPasoPeatonal().getNombre());
             expandirCobertura(verticePeatonal, estacionesCubiertas, distanciaActual, distanciaMaxima);
         }
     }
 
-// Sugiere dónde colocar una nueva sucursal para cubrir más estaciones
+    /**
+     * Sugiere una nueva ubicación de sucursal para maximizar la cobertura.
+     * @param estacionesPendientes Lista de estaciones no cubiertas.
+     * @param estacionesCubiertas Lista de estaciones cubiertas.
+     * @param rangoCobertura Rango de cobertura de la sucursal.
+     */
     private void proponerNuevaSucursal(ListaSimple estacionesPendientes, ListaSimple estacionesCubiertas, int rangoCobertura) {
         Vertice mejorOpcion = null;
         int maxCoberturaAdicional = 0;
 
-        // Iterar sobre las estaciones pendientes para simular la cobertura
         for (int i = 0; i < estacionesPendientes.getSize(); i++) {
             Vertice estacionPendiente = (Vertice) estacionesPendientes.getValor(i);
             ListaSimple coberturaTemporal = new ListaSimple();
 
-            // Simulamos la cobertura que ofrecería esta estación
             aplicarCobertura(estacionPendiente, coberturaTemporal, rangoCobertura);
-
-            // Contamos cuántas nuevas estaciones cubriría
             int coberturaAdicional = contarCoberturaNueva(coberturaTemporal, estacionesCubiertas);
 
-            // Si encontramos una mejor opción, la guardamos
             if (coberturaAdicional > maxCoberturaAdicional) {
                 mejorOpcion = estacionPendiente;
                 maxCoberturaAdicional = coberturaAdicional;
             }
         }
 
-        // Proporcionamos una sugerencia al usuario
         if (mejorOpcion != null) {
             JOptionPane.showMessageDialog(null, "Sugerencia: Colocar una sucursal en la estación "
                     + mejorOpcion.getParada().getNombre() + " para cubrir " + maxCoberturaAdicional + " estaciones adicionales.");
@@ -217,7 +238,12 @@ public class Cobertura {
         }
     }
 
-// Método para contar cuántas estaciones adicionales serían cubiertas
+    /**
+     * Cuenta cuántas estaciones nuevas serían cubiertas por una cobertura simulada.
+     * @param coberturaSimulada Lista de estaciones en la cobertura simulada.
+     * @param estacionesCubiertas Lista de estaciones ya cubiertas.
+     * @return Número de estaciones adicionales cubiertas.
+     */
     private int contarCoberturaNueva(ListaSimple coberturaSimulada, ListaSimple estacionesCubiertas) {
         int contador = 0;
 
@@ -232,5 +258,3 @@ public class Cobertura {
     }
 
 }
-
-

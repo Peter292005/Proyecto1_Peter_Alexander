@@ -60,14 +60,16 @@ public class AgregarConexion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         paradaRed = new javax.swing.JComboBox<>();
-        agregarConexionAction = new javax.swing.JButton();
-        Volver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         paradasLineaNueva = new javax.swing.JComboBox<>();
+        Volver = new javax.swing.JButton();
+        agregarConexionAction = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,47 +77,59 @@ public class AgregarConexion extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        jLabel1.setText("Agregar Conexion de Linea con Red");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Estacion de la Linea Nueva:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
+        jLabel3.setForeground(new java.awt.Color(204, 204, 0));
         jLabel3.setText("Estacion de la Red:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
+        paradaRed.setBackground(new java.awt.Color(204, 204, 0));
         paradaRed.setModel(modeloParadas);
         paradaRed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paradaRedActionPerformed(evt);
             }
         });
-        getContentPane().add(paradaRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 150, 20));
+        jPanel3.add(paradaRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, -1));
 
-        agregarConexionAction.setText("Añadir conexion");
-        agregarConexionAction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarConexionActionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(agregarConexionAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel2.setText("Estacion de la Linea Nueva:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
-        Volver.setText("Volver");
-        Volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
-
+        paradasLineaNueva.setBackground(new java.awt.Color(204, 204, 0));
         paradasLineaNueva.setModel(modeloParadasLinea);
         paradasLineaNueva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paradasLineaNuevaActionPerformed(evt);
             }
         });
-        getContentPane().add(paradasLineaNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, 30));
+        jPanel3.add(paradasLineaNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, -1));
+
+        Volver.setBackground(new java.awt.Color(204, 204, 0));
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
+
+        agregarConexionAction.setBackground(new java.awt.Color(204, 204, 0));
+        agregarConexionAction.setText("Añadir conexion");
+        agregarConexionAction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarConexionActionActionPerformed(evt);
+            }
+        });
+        jPanel3.add(agregarConexionAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel1.setText("Agregar Conexion de Linea con Red");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,6 +207,8 @@ public class AgregarConexion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JComboBox<String> paradaRed;
     private javax.swing.JComboBox<String> paradasLineaNueva;
     // End of variables declaration//GEN-END:variables

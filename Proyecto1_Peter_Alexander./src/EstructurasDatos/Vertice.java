@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mateusnaddaf
+ * @author PeterNaddaf
  */
 public class Vertice {
     private Parada parada;

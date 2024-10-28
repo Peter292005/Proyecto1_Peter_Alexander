@@ -62,18 +62,22 @@ DefaultComboBoxModel modeloparadasConSucursal = new DefaultComboBoxModel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Eliminar Sucursal");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("Seleccione la parada para remover sucursal:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         paradasConSucursal.setModel(modeloparadasConSucursal);
         jPanel1.add(paradasConSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
 
+        removerSucursal.setBackground(new java.awt.Color(204, 204, 0));
         removerSucursal.setText("Eliminar");
         removerSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +86,7 @@ DefaultComboBoxModel modeloparadasConSucursal = new DefaultComboBoxModel();
         });
         jPanel1.add(removerSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, -1));
 
+        VolverMenu.setBackground(new java.awt.Color(204, 204, 0));
         VolverMenu.setText("Volver al menu");
         VolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,14 +95,16 @@ DefaultComboBoxModel modeloparadasConSucursal = new DefaultComboBoxModel();
         });
         jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 0, 51));
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 50, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 0, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

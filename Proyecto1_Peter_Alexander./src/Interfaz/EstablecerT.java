@@ -47,15 +47,18 @@ public class EstablecerT extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Modificar T");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         valorActualT.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        valorActualT.setForeground(new java.awt.Color(255, 255, 204));
         valorActualT.setText("T");
-        jPanel1.add(valorActualT, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 90, 20));
+        jPanel1.add(valorActualT, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 90, 60));
 
         jLabel3.setText("Selecciona un valor de T:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
@@ -63,6 +66,7 @@ public class EstablecerT extends javax.swing.JFrame {
         nuevaT.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanel1.add(nuevaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 150, -1));
 
+        Actualizar.setBackground(new java.awt.Color(204, 204, 0));
         Actualizar.setText("Actualizar ");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +75,7 @@ public class EstablecerT extends javax.swing.JFrame {
         });
         jPanel1.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
+        VolverMenu.setBackground(new java.awt.Color(204, 204, 0));
         VolverMenu.setText("Volver al menu");
         VolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +84,9 @@ public class EstablecerT extends javax.swing.JFrame {
         });
         jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 0, 0));
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +95,7 @@ public class EstablecerT extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 50));
 
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("Valor Actual de T =");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
 

@@ -58,15 +58,18 @@ public class BusquedaDFS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Busqueda DFS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
 
         paradas.setModel(modeloParadasSucursal);
         jPanel1.add(paradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 280, -1));
 
+        recorridoDFS.setBackground(new java.awt.Color(204, 204, 0));
         recorridoDFS.setText("Realizar Busquedas");
         recorridoDFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +78,7 @@ public class BusquedaDFS extends javax.swing.JFrame {
         });
         jPanel1.add(recorridoDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 280, -1));
 
+        volver.setBackground(new java.awt.Color(204, 204, 0));
         volver.setText("volver");
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

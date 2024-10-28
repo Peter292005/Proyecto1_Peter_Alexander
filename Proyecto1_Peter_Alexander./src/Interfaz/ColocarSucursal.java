@@ -55,19 +55,23 @@ public class ColocarSucursal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Colocar Sucursal");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("Seleccione la parada para colocar la sucursal:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         paradasSinSucursal.setModel(modelparadasSinSucursal);
         jPanel1.add(paradasSinSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, -1));
 
+        SeleccionarParada.setBackground(new java.awt.Color(204, 204, 0));
         SeleccionarParada.setText("Seleccionar parada");
         SeleccionarParada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +80,7 @@ public class ColocarSucursal extends javax.swing.JFrame {
         });
         jPanel1.add(SeleccionarParada, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 130, 190, -1));
 
+        VolverMenu.setBackground(new java.awt.Color(204, 204, 0));
         VolverMenu.setText("Volver al menu");
         VolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +89,9 @@ public class ColocarSucursal extends javax.swing.JFrame {
         });
         jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 0, 0));
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

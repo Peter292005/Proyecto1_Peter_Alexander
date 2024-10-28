@@ -47,61 +47,72 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Menu");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
+        BusquedaBFS.setBackground(new java.awt.Color(204, 204, 0));
         BusquedaBFS.setText("Busqueda BFS");
         BusquedaBFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BusquedaBFSActionPerformed(evt);
             }
         });
-        jPanel1.add(BusquedaBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 130, 30));
+        jPanel1.add(BusquedaBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 130, 40));
 
+        BusquedaDFS.setBackground(new java.awt.Color(204, 204, 0));
         BusquedaDFS.setText("Busqueda DFS");
         BusquedaDFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BusquedaDFSActionPerformed(evt);
             }
         });
-        jPanel1.add(BusquedaDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 130, 30));
+        jPanel1.add(BusquedaDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 130, 40));
 
+        ColocarSucursal.setBackground(new java.awt.Color(204, 204, 0));
         ColocarSucursal.setText("Colocar Sucursal");
         ColocarSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ColocarSucursalActionPerformed(evt);
             }
         });
-        jPanel1.add(ColocarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, 30));
+        jPanel1.add(ColocarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 130, 40));
 
+        EliminarSucursal.setBackground(new java.awt.Color(204, 204, 0));
         EliminarSucursal.setText("Eliminar Sucursal");
         EliminarSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarSucursalActionPerformed(evt);
             }
         });
-        jPanel1.add(EliminarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 30));
+        jPanel1.add(EliminarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 130, 40));
 
+        EstablecerT.setBackground(new java.awt.Color(204, 204, 0));
         EstablecerT.setText("Establecer T");
         EstablecerT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EstablecerTActionPerformed(evt);
             }
         });
-        jPanel1.add(EstablecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 130, 30));
+        jPanel1.add(EstablecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 130, 40));
 
+        jButton6.setBackground(new java.awt.Color(204, 204, 0));
         jButton6.setText("Mostrar Grafo");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 130, 30));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 130, 30));
 
+        Exit.setBackground(new java.awt.Color(0, 0, 0));
         Exit.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        Exit.setForeground(new java.awt.Color(255, 0, 0));
         Exit.setText("X");
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +121,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
 
+        volver.setBackground(new java.awt.Color(204, 204, 0));
         volver.setText("Volver");
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,13 +130,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
 
+        AgregarLinea.setBackground(new java.awt.Color(204, 204, 0));
         AgregarLinea.setText("Agregar Linea");
         AgregarLinea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarLineaActionPerformed(evt);
             }
         });
-        jPanel1.add(AgregarLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
+        jPanel1.add(AgregarLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
