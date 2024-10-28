@@ -60,16 +60,19 @@ public class BusquedaBFS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Busqueda BFS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
         paradas.setModel(modeloParadasSucursal);
         jPanel1.add(paradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, -1));
 
-        recorrerBFS.setText("Realizae Recorrido");
+        recorrerBFS.setBackground(new java.awt.Color(204, 204, 0));
+        recorrerBFS.setText("Realizar Recorrido");
         recorrerBFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recorrerBFSActionPerformed(evt);
@@ -77,6 +80,7 @@ public class BusquedaBFS extends javax.swing.JFrame {
         });
         jPanel1.add(recorrerBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 250, -1));
 
+        volver.setBackground(new java.awt.Color(204, 204, 0));
         volver.setText("Volver");
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
